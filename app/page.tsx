@@ -16,9 +16,11 @@ export default function Landing() {
     setLoading(true);
     setError(null);
     const supabase = createClient();
+    // Force l'URL prod · window.location.origin peut être écrasé par le Site URL Supabase.
+    const origin = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      options: { emailRedirectTo: `${origin}/auth/callback` },
     });
     if (error) setError(error.message);
     else setSent(true);
