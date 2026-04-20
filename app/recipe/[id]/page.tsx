@@ -43,12 +43,21 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
         style={{ background: `linear-gradient(135deg, ${c1}, ${c2})` }}
       >
         <Link
-          href="/app"
+          href="/library"
           className="absolute top-5 left-5 w-10 h-10 rounded-full flex items-center justify-center"
           style={{ background: 'rgba(251,248,241,0.9)', color: tokens.ink }}
         >
           ‹
         </Link>
+        <div className="absolute top-5 right-20 flex gap-2">
+          <Link
+            href={`/recipe/${id}/nutrition`}
+            className="px-3 py-[6px] rounded-full mono text-[10px] tracking-widest"
+            style={{ background: 'rgba(251,248,241,0.9)', color: tokens.ink }}
+          >
+            KCAL
+          </Link>
+        </div>
         <div className="absolute top-5 right-5">
           <Cooky size={72} pose="cooking" />
         </div>
@@ -131,6 +140,23 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
             ))}
           </ol>
         </section>
+      )}
+
+      {/* Cook mode CTA · sticky bottom */}
+      {steps.length > 0 && (
+        <div className="fixed bottom-4 left-5 right-5 flex gap-2" style={{ maxWidth: 'calc(100vw - 40px)' }}>
+          <Link
+            href={`/recipe/${id}/cook`}
+            className="flex-1 h-14 rounded-full flex items-center justify-center font-medium text-[15px]"
+            style={{
+              background: tokens.saffron,
+              color: tokens.espresso,
+              boxShadow: '0 10px 30px rgba(217,122,39,0.35)',
+            }}
+          >
+            Commencer à cuisiner →
+          </Link>
+        </div>
       )}
     </main>
   );
