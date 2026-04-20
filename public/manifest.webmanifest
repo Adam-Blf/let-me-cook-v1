@@ -1,0 +1,17 @@
+{
+  "name": "Let Me Cook",
+  "short_name": "Let Me Cook",
+  "description": "Extrait n'importe quelle vidéo en recette structurée. Parce que cuisiner c'est s'amuser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6F1E8",
+  "theme_color": "#F6F1E8",
+  "orientation": "portrait",
+  "lang": "fr",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
+  ],
+  "categories": ["food", "lifestyle", "productivity"]
+}

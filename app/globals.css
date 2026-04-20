@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-cream: #F6F1E8;
+  --color-cream-soft: #EDE5D3;
+  --color-paper: #FBF8F1;
+  --color-ink: #1A1511;
+  --color-ink-soft: #3D342B;
+  --color-ink-muted: #7A6D5E;
+  --color-ink-faint: #B8AD9A;
+  --color-saffron: #D97A27;
+  --color-saffron-soft: #F3D9B1;
+  --color-tomato: #C44536;
+  --color-olive: #6B7A3A;
+  --color-plum: #6B3A4A;
+  --color-espresso: #1C1612;
+  --color-espresso-card: #2A201A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

@@ -1,0 +1,20 @@
+// Design tokens identiques à l'app Expo / proto Vercel · cohérence visuelle.
+export const tokens = {
+  cream: '#F6F1E8',
+  creamSoft: '#EDE5D3',
+  paper: '#FBF8F1',
+  ink: '#1A1511',
+  inkSoft: '#3D342B',
+  inkMuted: '#7A6D5E',
+  inkFaint: '#B8AD9A',
+  line: 'rgba(26,21,17,0.08)',
+  saffron: '#D97A27',
+  saffronSoft: '#F3D9B1',
+  tomato: '#C44536',
+  olive: '#6B7A3A',
+  honey: '#C99A3A',
+  plum: '#6B3A4A',
+  basil: '#4A6B3A',
+  espresso: '#1C1612',
+  espressoCard: '#2A201A',
+} as const;
