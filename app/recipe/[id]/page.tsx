@@ -51,6 +51,13 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
         </Link>
         <div className="absolute top-5 right-20 flex gap-2">
           <Link
+            href={`/editor/${id}`}
+            className="px-3 py-[6px] rounded-full mono text-[10px] tracking-widest"
+            style={{ background: 'rgba(251,248,241,0.9)', color: tokens.ink }}
+          >
+            ÉDIT
+          </Link>
+          <Link
             href={`/recipe/${id}/nutrition`}
             className="px-3 py-[6px] rounded-full mono text-[10px] tracking-widest"
             style={{ background: 'rgba(251,248,241,0.9)', color: tokens.ink }}
@@ -99,15 +106,18 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
           </div>
           <ul>
             {ingredients.map((ing, i) => (
-              <li
-                key={i}
-                className="flex items-baseline py-3 border-b text-base"
-                style={{ borderColor: 'rgba(26,21,17,0.08)', color: tokens.ink }}
-              >
-                <span className="mono w-28 font-semibold" style={{ color: tokens.saffron }}>
-                  {ing.q} {ing.u}
-                </span>
-                <span className="flex-1">{ing.name}</span>
+              <li key={i}>
+                <Link
+                  href={`/ingredient?name=${encodeURIComponent(ing.name)}`}
+                  className="flex items-baseline py-3 border-b text-base"
+                  style={{ borderColor: 'rgba(26,21,17,0.08)', color: tokens.ink }}
+                >
+                  <span className="mono w-28 font-semibold" style={{ color: tokens.saffron }}>
+                    {ing.q} {ing.u}
+                  </span>
+                  <span className="flex-1">{ing.name}</span>
+                  <span style={{ color: tokens.inkFaint }}>›</span>
+                </Link>
               </li>
             ))}
           </ul>

@@ -2,7 +2,8 @@
   "name": "Let Me Cook",
   "short_name": "Let Me Cook",
   "description": "Extrait n'importe quelle vidéo en recette structurée. Parce que cuisiner c'est s'amuser.",
-  "start_url": "/",
+  "start_url": "/library",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#F6F1E8",
   "theme_color": "#F6F1E8",
@@ -13,5 +14,29 @@
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-maskable.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
   ],
-  "categories": ["food", "lifestyle", "productivity"]
+  "categories": ["food", "lifestyle", "productivity"],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Ajouter une recette",
+      "short_name": "Ajouter",
+      "url": "/add",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Bibliothèque",
+      "short_name": "Biblio",
+      "url": "/library",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
 }
