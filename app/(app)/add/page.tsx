@@ -1,13 +1,15 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Cooky } from '@/components/Cooky';
+import { ExtractionLoader } from '@/components/ExtractionLoader';
 import { tokens } from '@/lib/tokens';
 
-export default function AddPage() {
+function AddPageInner() {
   const router = useRouter();
-  const [url, setUrl] = useState('');
+  const searchParams = useSearchParams();
+  const [url, setUrl] = useState(searchParams.get('url') ?? '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,6 +40,7 @@ export default function AddPage() {
 
   return (
     <main className="flex-1 flex flex-col px-5 pt-5 pb-6" style={{ background: tokens.cream }}>
+      <ExtractionLoader visible={loading} />
       <div className="flex items-center justify-between">
         <div>
           <div className="mono text-[11px] tracking-widest uppercase mb-1" style={{ color: tokens.saffron }}>
@@ -133,5 +136,13 @@ export default function AddPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function AddPage() {
+  return (
+    <Suspense fallback={<div style={{ background: tokens.cream, minHeight: '100vh' }} />}>
+      <AddPageInner />
+    </Suspense>
   );
 }
