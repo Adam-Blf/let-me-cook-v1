@@ -1,5 +1,12 @@
 # Let Me Cook
 
+![Status](https://img.shields.io/badge/status-production-brightgreen)
+![Next.js](https://img.shields.io/badge/Next.js_16-000?logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white)
+![Stripe](https://img.shields.io/badge/Stripe-635BFF?logo=stripe&logoColor=white)
+![Last Commit](https://img.shields.io/github/last-commit/Adam-Blf/let-me-cook-v1)
+
 PWA Next.js 16 qui extrait et structure des recettes depuis des videos YouTube et Instagram. Scrape audio, transcrit, puis organise ingredients, etapes, et notes via LLM pour une cuisine sans friction.
 
 ## Stack
