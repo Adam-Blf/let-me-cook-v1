@@ -14,6 +14,24 @@
 
 PWA Next.js 16 qui extrait et structure des recettes depuis des videos YouTube et Instagram. Scrape audio, transcrit, puis organise ingredients, etapes, et notes via LLM pour une cuisine sans friction.
 
+## Architecture
+
+```mermaid
+flowchart TB
+    USER["PWA Next.js 16<br/>App Router · offline-ready"]
+    ADD["app/(app)/add<br/>saisie URL YouTube / Instagram"]
+    EXTRACT["app/api/extract<br/>lib/extract.ts · transcript + LLM Groq"]
+    RECIPE["Recette structuree<br/>ingredients · etapes · temps"]
+    SUPA["Supabase<br/>auth · Postgres · storage · bibliotheque"]
+    COOK["app/recipe/[id]/cook<br/>mode cuisine · liste courses · nutrition"]
+    PAY["app/paywall + Stripe<br/>abonnement premium · lib/tokens.ts"]
+
+    USER --> ADD --> EXTRACT --> RECIPE --> SUPA
+    SUPA --> COOK
+    USER --> PAY
+    PAY -.quota.-> EXTRACT
+```
+
 ## Stack
 
 - Next.js 16 (App Router) + TypeScript
