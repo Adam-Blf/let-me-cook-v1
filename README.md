@@ -18,13 +18,13 @@ PWA Next.js 16 qui extrait et structure des recettes depuis des videos YouTube e
 
 ```mermaid
 flowchart TB
-    USER["PWA Next.js 16<br/>App Router · offline-ready"]
+    USER["PWA Next.js 16<br/>App Router - offline-ready"]
     ADD["app/(app)/add<br/>saisie URL YouTube / Instagram"]
-    EXTRACT["app/api/extract<br/>lib/extract.ts · transcript + LLM Groq"]
-    RECIPE["Recette structuree<br/>ingredients · etapes · temps"]
-    SUPA["Supabase<br/>auth · Postgres · storage · bibliotheque"]
-    COOK["app/recipe/[id]/cook<br/>mode cuisine · liste courses · nutrition"]
-    PAY["app/paywall + Stripe<br/>abonnement premium · lib/tokens.ts"]
+    EXTRACT["app/api/extract<br/>lib/extract.ts - transcript + LLM Groq"]
+    RECIPE["Recette structuree<br/>ingredients - etapes - temps"]
+    SUPA["Supabase<br/>auth - Postgres - storage - bibliotheque"]
+    COOK["app/recipe/[id]/cook<br/>mode cuisine - liste courses - nutrition"]
+    PAY["app/paywall + Stripe<br/>abonnement premium - lib/tokens.ts"]
 
     USER --> ADD --> EXTRACT --> RECIPE --> SUPA
     SUPA --> COOK
@@ -79,7 +79,7 @@ MIT
 ---
 
 <p align="center">
-  <sub>Par <a href="https://adam.beloucif.com">Adam Beloucif</a> · Data Engineer & Fullstack Developer · <a href="https://github.com/Adam-Blf">GitHub</a> · <a href="https://www.linkedin.com/in/adambeloucif/">LinkedIn</a></sub>
+  <sub>Par <a href="https://adam.beloucif.com">Adam Beloucif</a> - Data Engineer & Fullstack Developer - <a href="https://github.com/Adam-Blf">GitHub</a> - <a href="https://www.linkedin.com/in/adambeloucif/">LinkedIn</a></sub>
 </p>
 
 
