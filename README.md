@@ -1,3 +1,8 @@
+> **Depot consolide.** Version 1 en PWA, remplacee par l'application mobile.
+>
+> Le developpement se poursuit sur **[let-me-cook](https://github.com/Adam-Blf/let-me-cook)**.
+> Ce depot est conserve en archive pour son historique.
+
 # Let Me Cook
 
 [![version](https://img.shields.io/badge/version-0.1.0-000091?style=flat-square)](https://github.com/Adam-Blf/let-me-cook-v1/releases)
