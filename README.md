@@ -64,6 +64,12 @@ npm run dev
 
 Ouvrir `http://localhost:3000`.
 
+En local, `next.config.ts` charge aussi le fichier de secrets central
+`~/.secrets/projets.env` s'il existe (chemin modifiable par `CENTRAL_ENV_FILE`),
+sans jamais ecraser une variable deja definie. Les cles partagees entre projets
+portent le prefixe `LETMECOOK` : `NEXT_PUBLIC_LETMECOOK_SUPABASE_URL`,
+`NEXT_PUBLIC_LETMECOOK_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_LETMECOOK_APP_URL`.
+
 ## Fonctionnalites
 
 - Import de videos recettes YouTube / Instagram via URL
