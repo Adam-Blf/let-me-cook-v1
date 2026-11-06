@@ -5,9 +5,8 @@
 
 # Let Me Cook
 
-[![version](https://img.shields.io/badge/version-0.1.0-000091?style=flat-square)](https://github.com/Adam-Blf/let-me-cook-v1/releases)
-
 <!-- adam-badges:start -->
+[![version](https://img.shields.io/badge/version-0.1.0-163767?style=flat-square)](CHANGELOG.md)
 [![commits](https://img.shields.io/github/commit-activity/t/Adam-Blf/let-me-cook-v1?color=001329&label=commits&style=flat-square)](https://github.com/Adam-Blf/let-me-cook-v1/commits) [![visites](https://hits.sh/github.com/Adam-Blf/let-me-cook-v1.svg?style=flat-square&label=visites&color=001329)](https://hits.sh/github.com/Adam-Blf/let-me-cook-v1/) [![last commit](https://img.shields.io/github/last-commit/Adam-Blf/let-me-cook-v1?color=D4A437&style=flat-square&label=dernier%20push)](https://github.com/Adam-Blf/let-me-cook-v1/commits) [![top language](https://img.shields.io/github/languages/top/Adam-Blf/let-me-cook-v1?style=flat-square)](https://github.com/Adam-Blf/let-me-cook-v1) [![license](https://img.shields.io/github/license/Adam-Blf/let-me-cook-v1?style=flat-square&color=D4A437)](LICENSE)
 <!-- adam-badges:end -->
 
@@ -19,24 +18,37 @@
 ![Stripe](https://img.shields.io/badge/Stripe-635BFF?logo=stripe&logoColor=white)
 ![Last Commit](https://img.shields.io/github/last-commit/Adam-Blf/let-me-cook-v1)
 
-PWA Next.js 16 qui extrait et structure des recettes depuis des videos YouTube et Instagram. Scrape audio, transcrit, puis organise ingredients, etapes, et notes via LLM pour une cuisine sans friction.
+PWA Next.js 16 qui extrait et structure des recettes depuis des videos YouTube. Recupere la transcription de la video, puis organise ingredients, etapes et notes via un LLM pour une cuisine sans friction.
 
 ## Architecture
 
 ```mermaid
 flowchart TB
-    USER["PWA Next.js 16<br/>App Router - offline-ready"]
-    ADD["app/(app)/add<br/>saisie URL YouTube / Instagram"]
-    EXTRACT["app/api/extract<br/>lib/extract.ts - transcript + LLM Groq"]
-    RECIPE["Recette structuree<br/>ingredients - etapes - temps"]
-    SUPA["Supabase<br/>auth - Postgres - storage - bibliotheque"]
-    COOK["app/recipe/[id]/cook<br/>mode cuisine - liste courses - nutrition"]
-    PAY["app/paywall + Stripe<br/>abonnement premium - lib/tokens.ts"]
+    USER["PWA Next.js 16<br/>App Router"]
+    ADD["app/(app)/add<br/>saisie d'une URL YouTube"]
+    EXTRACT["app/api/extract<br/>controle session et abonnement"]
+    LLM["lib/extract.ts<br/>transcription YouTube + LLM Groq"]
+    REFUS["Refus<br/>401 non connecte, 402 abonnement requis, 400 URL non YouTube"]
+    PAY["app/paywall<br/>Stripe Payment Links"]
+    SUPA[("Supabase<br/>auth, profils, recettes")]
+    COOK["app/recipe/[id]<br/>mode cuisine, nutrition, fin de recette"]
 
-    USER --> ADD --> EXTRACT --> RECIPE --> SUPA
+    USER --> ADD --> EXTRACT
+    EXTRACT -->|requete refusee| REFUS
+    REFUS -->|402| PAY
+    EXTRACT --> LLM -->|recette structuree| SUPA
     SUPA --> COOK
-    USER --> PAY
-    PAY -.quota.-> EXTRACT
+
+    classDef input fill:#2563eb,stroke:#1e3a8a,color:#fff
+    classDef process fill:#7c3aed,stroke:#4c1d95,color:#fff
+    classDef store fill:#f59e0b,stroke:#92400e,color:#111
+    classDef ok fill:#16a34a,stroke:#14532d,color:#fff
+    classDef error fill:#dc2626,stroke:#7f1d1d,color:#fff
+    class USER,ADD input
+    class EXTRACT,LLM,PAY process
+    class SUPA store
+    class COOK ok
+    class REFUS error
 ```
 
 ## Stack
@@ -72,7 +84,7 @@ portent le prefixe `LETMECOOK` : `NEXT_PUBLIC_LETMECOOK_SUPABASE_URL`,
 
 ## Fonctionnalites
 
-- Import de videos recettes YouTube / Instagram via URL
+- Import de videos recettes YouTube via URL (Instagram et TikTok non supportes en V1)
 - Extraction automatique ingredients + etapes + temps de cuisson
 - Sauvegarde dans bibliotheque personnelle (Supabase)
 - Mode hors-ligne PWA
@@ -94,14 +106,3 @@ MIT
 <p align="center">
   <sub>Par <a href="https://adam.beloucif.com">Adam Beloucif</a> - Data Engineer & Fullstack Developer - <a href="https://github.com/Adam-Blf">GitHub</a> - <a href="https://www.linkedin.com/in/adambeloucif/">LinkedIn</a></sub>
 </p>
-
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=Adam-Blf%2Flet-me-cook-v1&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Adam-Blf/let-me-cook-v1&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Adam-Blf/let-me-cook-v1&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Adam-Blf/let-me-cook-v1&type=date&legend=top-left" />
- </picture>
-</a>
